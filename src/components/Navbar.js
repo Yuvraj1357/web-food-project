@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 // import Badge from "@material-ui/core/Badge";
 // import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { useCart } from './ContextReducer';
 import Modal from '../Modal';
 import Cart from '../screens/Cart';
 export default function Navbar(props) {
@@ -17,7 +16,7 @@ export default function Navbar(props) {
     const loadCart = () => {
         setCartView(true)
     }
-    const items = useCart();
+    // const items = useCart();
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-success position-sticky"
@@ -44,9 +43,7 @@ export default function Navbar(props) {
                             </form> :
                             <div>
                                 <div className="btn bg-white text-success mx-2 " onClick={loadCart}>
-                                    <Badge color="secondary" badgeContent={items.length} >
-                                        <ShoppingCartIcon />
-                                    </Badge>
+
                                     Cart
                                 </div>
                                 {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}
