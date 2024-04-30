@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-undef */
 
 import React, { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
@@ -8,20 +7,16 @@ import { useCart } from './ContextReducer';
 import Modal from '../Modal';
 import Cart from '../screens/Cart';
 export default function Navbar(props) {
-
     const [cartView, setCartView] = useState(false)
     localStorage.setItem('temp', "first")
     let navigate = useNavigate();
     const handleLogout = () => {
         localStorage.removeItem('token')
-
         navigate("/login")
     }
-
     const loadCart = () => {
         setCartView(true)
     }
-
     const items = useCart();
     return (
         <div>
@@ -35,11 +30,11 @@ export default function Navbar(props) {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/">Home</Link>  {/* index.css - nav-link color white */}
+                                <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/">Home</Link>  
                             </li>
                             {(localStorage.getItem("token")) ?
                                 <li className="nav-item">
-                                    <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/myorder" >My Orders</Link>  {/* index.css - nav-link color white */}
+                                    <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/myorder" >My Orders</Link>  
                                 </li> : ""}
                         </ul>
                         {(!localStorage.getItem("token")) ?
@@ -48,16 +43,13 @@ export default function Navbar(props) {
                                 <Link className="btn bg-white text-success mx-1" to="/signup">Signup</Link>
                             </form> :
                             <div>
-
                                 <div className="btn bg-white text-success mx-2 " onClick={loadCart}>
                                     <Badge color="secondary" badgeContent={items.length} >
                                         <ShoppingCartIcon />
                                     </Badge>
                                     Cart
                                 </div>
-
                                 {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}
-
                                 <button onClick={handleLogout} className="btn bg-white text-success" >Logout</button></div>}
                     </div>
                 </div>

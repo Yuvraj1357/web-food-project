@@ -10,7 +10,6 @@ module.exports = function (callback) {
                 const categoryCollection = await mongoose.connection.db.collection("food_Category");
                 categoryCollection.find({}).toArray(async function (err, Catdata) {
                     callback(err, data, Catdata);
-
                 })
             });
         }
