@@ -3,7 +3,6 @@ global.foodData = require('./db')(function call(err, data, CatData) {
   if(err) console.log(err);
   global.foodData = data;
   global.foodCategory = CatData;
-  // console.log(CatData);
 })
 
 const express = require('express')
@@ -28,4 +27,5 @@ app.use('/api/auth', require('./Routes/Auth'));
 app.listen(port, () => {
   console.log(`Example app listening on http://localhost:${port}`)
 })
+
 
