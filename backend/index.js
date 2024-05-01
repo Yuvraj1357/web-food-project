@@ -1,6 +1,9 @@
 
 global.foodData = require('./db')(function call(err, data, CatData) {
+<<<<<<< HEAD
   // console.log(data)
+=======
+>>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
   if(err) console.log(err);
   global.foodData = data;
   global.foodCategory = CatData;
@@ -29,3 +32,7 @@ app.listen(port, () => {
   console.log(`Example app listening on http://localhost:${port}`)
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
