@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* eslint-disable react/jsx-no-undef */
 
 import React, { useState } from 'react'
@@ -10,23 +9,11 @@ import Modal from '../Modal';
 import Cart from '../screens/Cart';
 export default function Navbar(props) {
 
-=======
-
-import React, { useState } from 'react'
-import { Link, useNavigate } from "react-router-dom";
-// import Badge from "@material-ui/core/Badge";
-// import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-// import { useCart } from './ContextReducer';
-import Modal from '../Modal';
-import Cart from '../screens/Cart';
-export default function Navbar(props) {
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
     const [cartView, setCartView] = useState(false)
     localStorage.setItem('temp', "first")
     let navigate = useNavigate();
     const handleLogout = () => {
         localStorage.removeItem('token')
-<<<<<<< HEAD
 
         navigate("/login")
     }
@@ -36,14 +23,6 @@ export default function Navbar(props) {
     }
 
     const items = useCart();
-=======
-        navigate("/login")
-    }
-    const loadCart = () => {
-        setCartView(true)
-    }
-    // const items = useCart();
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-success position-sticky"
@@ -56,19 +35,11 @@ export default function Navbar(props) {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-<<<<<<< HEAD
                                 <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/">Home</Link>  {/* index.css - nav-link color white */}
                             </li>
                             {(localStorage.getItem("token")) ?
                                 <li className="nav-item">
                                     <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/myorder" >My Orders</Link>  {/* index.css - nav-link color white */}
-=======
-                                <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/">Home</Link>  
-                            </li>
-                            {(localStorage.getItem("token")) ?
-                                <li className="nav-item">
-                                    <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/myorder" >My Orders</Link>  
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
                                 </li> : ""}
                         </ul>
                         {(!localStorage.getItem("token")) ?
@@ -77,7 +48,6 @@ export default function Navbar(props) {
                                 <Link className="btn bg-white text-success mx-1" to="/signup">Signup</Link>
                             </form> :
                             <div>
-<<<<<<< HEAD
 
                                 <div className="btn bg-white text-success mx-2 " onClick={loadCart}>
                                     <Badge color="secondary" badgeContent={items.length} >
@@ -88,13 +58,6 @@ export default function Navbar(props) {
 
                                 {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}
 
-=======
-                                <div className="btn bg-white text-success mx-2 " onClick={loadCart}>
-
-                                    Cart
-                                </div>
-                                {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
                                 <button onClick={handleLogout} className="btn bg-white text-success" >Logout</button></div>}
                     </div>
                 </div>

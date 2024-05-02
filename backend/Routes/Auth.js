@@ -18,20 +18,14 @@ router.post('/createuser', [
     if (!errors.isEmpty()) {
         return res.status(400).json({ success, errors: errors.array() })
     }
-<<<<<<< HEAD
     // console.log(req.body)
     // let user = await User.findOne({email:req.body.email})
-=======
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
     const salt = await bcrypt.genSalt(10)
     let securePass = await bcrypt.hash(req.body.password, salt);
     try {
         await User.create({
             name: req.body.name,
-<<<<<<< HEAD
             // password: req.body.password,  first write this and then use bcryptjs
-=======
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
             password: securePass,
             email: req.body.email,
             location: req.body.location
@@ -53,11 +47,8 @@ router.post('/createuser', [
         console.error(error.message)
     }
 })
-<<<<<<< HEAD
 
 // Authentication a User, No login Requiered
-=======
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
 router.post('/login', [
     body('email', "Enter a Valid Email").isEmail(),
     body('password', "Password cannot be blank").exists(),
@@ -94,11 +85,8 @@ router.post('/login', [
         res.send("Server Error")
     }
 })
-<<<<<<< HEAD
 
 // Get logged in User details, Login Required.
-=======
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
 router.post('/getuser', fetch, async (req, res) => {
     try {
         const userId = req.user.id;
@@ -110,10 +98,7 @@ router.post('/getuser', fetch, async (req, res) => {
 
     }
 })
-<<<<<<< HEAD
 // Get logged in User details, Login Required.
-=======
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
 router.post('/getlocation', async (req, res) => {
     try {
         let lat = req.body.latlong.lat
@@ -122,14 +107,10 @@ router.post('/getlocation', async (req, res) => {
         let location = await axios
             .get("https://api.opencagedata.com/geocode/v1/json?q=" + lat + "+" + long + "&key=74c89b3be64946ac96d777d08b878d43")
             .then(async res => {
-<<<<<<< HEAD
                 // console.log(`statusCode: ${res.status}`)
                 console.log(res.data.results)
                 // let response = stringify(res)
                 // response = await JSON.parse(response)
-=======
-                console.log(res.data.results)
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
                 let response = res.data.results[0].components;
                 console.log(response)
                 let { village, county, state_district, state, postcode } = response
@@ -152,10 +133,6 @@ router.post('/foodData', async (req, res) => {
     } catch (error) {
         console.error(error.message)
         res.send("Server Error")
-<<<<<<< HEAD
-=======
-
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
     }
 })
 
@@ -163,10 +140,6 @@ router.post('/orderData', async (req, res) => {
     let data = req.body.order_data
     await data.splice(0,0,{Order_date:req.body.order_date})
     console.log("1231242343242354",req.body.email)
-<<<<<<< HEAD
-=======
-
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
     let eId = await Order.findOne({ 'email': req.body.email })    
     console.log(eId)
     if (eId===null) {
@@ -203,20 +176,13 @@ router.post('/myOrderData', async (req, res) => {
     try {
         console.log(req.body.email)
         let eId = await Order.findOne({ 'email': req.body.email })
-<<<<<<< HEAD
         //console.log(eId)
-=======
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
         res.json({orderData:eId})
     } catch (error) {
         res.send("Error",error.message)
     }
-<<<<<<< HEAD
     
 
 });
 
-=======
-});
->>>>>>> 3629fb6ca20262d8163031a6dd447f6ab80f5bb7
 module.exports = router
