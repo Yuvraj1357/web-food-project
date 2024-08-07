@@ -20,7 +20,7 @@ export default function Signup() {
     })
     let [lat, long] = latlong
     console.log(lat, long)
-    const response = await fetch("http://localhost:5000/api/auth/getlocation", {
+    const response = await fetch("https://food-app-backend-ashen.vercel.app/api/auth/getlocation", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
+    const response = await fetch("https://food-app-backend-ashen.vercel.app/api/auth/createuser", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
