@@ -7,12 +7,15 @@ global.foodData = require('./db')(function call(err, data, CatData) {
 const cors=require("cors")
 const express = require('express')
 const app = express()
-const port = 5000
-app.use(cors({
-  origin: "https://deploy-mern-1whq.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+const port = 5000;
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://deploy-mern-1whq.vercel.app'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
-}))
+};
+
+app.use(cors(corsOptions));
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header(

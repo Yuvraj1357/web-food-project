@@ -13,6 +13,16 @@ import Login from './screens/Login';
 import Signup from './screens/Signup';
 import { CartProvider } from './components/ContextReducer';
 import MyOrder from './screens/MyOrder';
+const cors = require('cors');
+
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://deploy-mern-1whq.vercel.app'], // add your allowed origins here
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 
 function App() {
   return (
